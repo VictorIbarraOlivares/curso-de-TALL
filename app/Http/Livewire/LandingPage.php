@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use Illuminate\Support\Facades\Log;
+use App\Models\Subscriber;
 
 class LandingPage extends Component
 {
@@ -16,6 +16,10 @@ class LandingPage extends Component
 
     public function subscribe()
     {
-        Log::debug($this->email);
+        $subscriber = Subscriber::create([
+            'email' => $this->email
+        ]);
+        
+        $this->reset('email');
     }
 }
