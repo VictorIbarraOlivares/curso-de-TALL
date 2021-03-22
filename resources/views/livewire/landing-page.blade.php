@@ -34,54 +34,40 @@
         </div>
     </div>
     {{-- Modal --}}
-    <div 
-        class="flex fixed top-0 w-full h-full bg-gray-900 bg-opacity-60 items-center"
-        x-show="showSubscribe"
-        x-on:click.self="showSubscribe = false"
-        x-on:keydown.escape.window="showSubscribe = false"
-        >
-        <div class="m-auto bg-pink-500 shadow-2xl rounded-xl p-8">
-            <p class="text-white font-extrabold text-5xl text-center ">
-                Let's go it!
-            </p>
-    
-            <form 
-                class="flex flex-col items-center p-24"
-                wire:submit.prevent="subscribe"
-                >
-                <x-input 
-                    class="px-5 py-3 w-80 border border-blue-400 " 
-                    type="email"
-                    name="email"
-                    placeholder="Email address"
-                    wire:model="email"
-                ></x-input>
-                <span class="text-gray-100 text-xs" >
-                    We will send you a confirmation email.
-                </span>
-                <x-button class="px-5 py-3 mt-5 w-80 bg-blue-500 justify-center " >
-                    Get In
-                </x-button>
-            </form>
-        </div>
-    </div>
+    <x-modal trigger="showSubscribe" class="bg-pink-500">
+        <p class="text-white font-extrabold text-5xl text-center ">
+            Let's go it!
+        </p>
 
-    <div 
-        class="flex fixed top-0 w-full h-full bg-gray-900 bg-opacity-60 items-center"
-        x-show="showSuccess"
-        x-on:click.self="showSuccess = false"
-        x-on:keydown.escape.window="showSuccess = false"
-        >
-        <div class="m-auto bg-green-500 shadow-2xl rounded-xl p-8">
-            <p class="animate-pulse text-white font-extrabold text-9xl text-center ">
-                &check;
-            </p>
-            <p class="text-white font-extrabold text-5xl text-center mt-16" >
-                Great!
-            </p>
-            <p class="text-white text-3xl text-center" >
-                See you in your inbox.
-            </p>
-        </div>
-    </div>
+        <form 
+            class="flex flex-col items-center p-24"
+            wire:submit.prevent="subscribe"
+            >
+            <x-input 
+                class="px-5 py-3 w-80 border border-blue-400 " 
+                type="email"
+                name="email"
+                placeholder="Email address"
+                wire:model="email"
+            ></x-input>
+            <span class="text-gray-100 text-xs" >
+                We will send you a confirmation email.
+            </span>
+            <x-button class="px-5 py-3 mt-5 w-80 bg-blue-500 justify-center " >
+                Get In
+            </x-button>
+        </form>
+    </x-modal>
+
+    <x-modal trigger="showSuccess" class="bg-green-500">
+        <p class="animate-pulse text-white font-extrabold text-9xl text-center ">
+            &check;
+        </p>
+        <p class="text-white font-extrabold text-5xl text-center mt-16" >
+            Great!
+        </p>
+        <p class="text-white text-3xl text-center" >
+            See you in your inbox.
+        </p>
+    </x-modal>
 </div>
