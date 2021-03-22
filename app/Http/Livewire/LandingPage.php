@@ -9,6 +9,10 @@ class LandingPage extends Component
 {
     public $email;
 
+    protected $rules = [
+        'email' => 'required|unique:subscribers,email|email:filter',
+    ];
+
     public function render()
     {
         return view('livewire.landing-page');
@@ -16,6 +20,8 @@ class LandingPage extends Component
 
     public function subscribe()
     {
+        $this->validate();
+        
         $subscriber = Subscriber::create([
             'email' => $this->email
         ]);
