@@ -11,6 +11,8 @@ use Illuminate\Auth\Notifications\VerifyEmail;
 class LandingPage extends Component
 {
     public $email;
+    public $showSubscribe = false;
+    public $showSuccess = false;
 
     protected $rules = [
         'email' => 'required|unique:subscribers,email|email:filter',
@@ -48,5 +50,7 @@ class LandingPage extends Component
         }, $deadLockRetries = 5);
         
         $this->reset('email');
+        $this->showSubscribe = false;
+        $this->showSuccess = true;
     }
 }
