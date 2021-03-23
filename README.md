@@ -21,3 +21,8 @@ In terminal command:
 ## For test
 In terminal command:
  - php artisan migrate:fresh --seed
+
+Create user admin with php artisan tinker:
+ - User::factory()->create(['email' => 'admin@admin.com', 'name' => 'admin']);
+
+ 
